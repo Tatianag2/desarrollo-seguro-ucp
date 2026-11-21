@@ -41,10 +41,10 @@ _ai_provider_from_key() {
       : "${GATE_AI_MODEL:=kimi-k3}" ;;
     gsk_*)
       : "${GATE_AI_BASE_URL:=https://api.groq.com/openai/v1}"
-      : "${GATE_AI_MODEL:=llama-3.3-70b-versatile}" ;;
+      : "${GATE_AI_MODEL:=openai/gpt-oss-120b}" ;;
     *)
       : "${GATE_AI_BASE_URL:=https://api.groq.com/openai/v1}"
-      : "${GATE_AI_MODEL:=llama-3.3-70b-versatile}" ;;
+      : "${GATE_AI_MODEL:=openai/gpt-oss-120b}" ;;
   esac
   export GATE_AI_BASE_URL GATE_AI_MODEL
 }
@@ -56,7 +56,7 @@ _ai_validate() {
      -H "Authorization: Bearer $2" "$1/models" 2>/dev/null)
   case "$_AI_LASTCODE" in
     401|403) return 1;;   # auth definitivamente mala
-    *)       return 0;;   # 2xx ok; 000/404/etc -> no bloquear
+    *)       return 0;;   # 2xx ok; 000/404/etc -> no bloquea
   esac
 }
 

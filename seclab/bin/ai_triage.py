@@ -57,7 +57,7 @@ def ask_ai(report):
            or os.environ.get("OPENAI_API_KEY"))
     # ojo: en CI una variable no definida llega como "" (no ausente) -> usar `or`.
     base = (os.environ.get("GATE_AI_BASE_URL") or "https://api.groq.com/openai/v1").rstrip("/")
-    model = os.environ.get("GATE_AI_MODEL") or "llama-3.3-70b-versatile"
+    model = os.environ.get("GATE_AI_MODEL") or "openai/gpt-oss-120b"
 
     if not key:
         return "", ("IA no configurada: define el secret `GATE_AI_API_KEY` "
@@ -113,7 +113,8 @@ def ask_ai(report):
             base + "/chat/completions", data=json.dumps(payload).encode("utf-8"),
             method="POST",
             headers={"Authorization": "Bearer " + key,
-                     "Content-Type": "application/json"})
+                     "Content-Type": "application/json",
+                     "User-Agent": "curl/8.5.0"})
         with urllib.request.urlopen(req, timeout=90) as r:
             data = json.loads(r.read().decode("utf-8"))
         # Solo el `content` final; el reasoning_content es borrador, no se publica.
