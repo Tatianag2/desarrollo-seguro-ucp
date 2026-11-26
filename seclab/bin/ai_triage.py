@@ -23,6 +23,11 @@ import sys
 import urllib.request
 import urllib.error
 
+try:
+    sys.stdout.reconfigure(encoding="utf-8")
+except Exception:
+    pass
+
 MARKER = "<!-- seclab-gate-ai -->"  # para que el workflow actualice el mismo comentario
 
 

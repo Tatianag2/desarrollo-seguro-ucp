@@ -8,6 +8,11 @@ diff de alarmas (nuevas / subsanadas) vs la corrida anterior y escribe:
 """
 import json, os, sys, time, datetime
 
+try:
+    sys.stdout.reconfigure(encoding="utf-8")
+except Exception:
+    pass
+
 C = dict(g="\033[38;5;46m", y="\033[38;5;226m", c="\033[38;5;51m",
          r="\033[38;5;196m", d="\033[2m", b="\033[1m", x="\033[0m")
 
