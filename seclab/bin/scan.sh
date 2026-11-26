@@ -32,6 +32,7 @@ done
 
 # ---- fase interna: corre los escaneres (se invoca envuelta por heisenberg) ----
 if [ "${1:-}" = "__run" ]; then
+  export MSYS_NO_PATHCONV=1
   SCANDIR="$2"; STATE="$3"; WITH_TRIVY="$4"
   mkdir -p "$STATE"
   rm -f "$STATE/scan_error"

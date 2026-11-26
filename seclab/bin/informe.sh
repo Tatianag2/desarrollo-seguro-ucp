@@ -25,9 +25,9 @@ docker info >/dev/null 2>&1 || { printf "${R}Docker no responde (arráncalo).${X
 . "$HERE/_demo_app.sh"
 
 # metadatos
-WHO="$(git config user.name 2>/dev/null || echo 'alumno')"
-LOGIN="$(gh api user -q .login 2>/dev/null || echo '')"
-REPO="$(gh repo view --json nameWithOwner -q .nameWithOwner 2>/dev/null || basename "$ROOT")"
+WHO="Tatiana García Grajales (@Tatianag2) y Javier Alejandro Vargas (@javargasp26)"
+LOGIN=""
+REPO="Tatianag2/desarrollo-seguro-ucp"
 BRANCH="$(git -C "$ROOT" rev-parse --abbrev-ref HEAD 2>/dev/null || echo '-')"
 DATE="$(date '+%Y-%m-%d %H:%M')"
 MODEL="${GATE_AI_MODEL:-(sin IA)}"
